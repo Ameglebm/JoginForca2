@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forca</title>
+    <title>Jogo da Forca com Pyodide</title>
+    <script src="pyodide/pyodide.js"></script>
+    <script>
+        languagePluginLoader.then(() => {
+            // Carregar pacotes necessários do Pyodide
+            pyodide.loadPackage(['numpy']).then(() => {
+                fetch('main.py')
+                    .then(response => response.text())
+                    .then(script => pyodide.runPython(script));
+            });
+        });
+    </script>
 </head>
 <body>
-    
+    <h1>Jogo da Forca com Pyodide</h1>
+    <canvas id="canvas" width="800" height="600"></canvas>
 </body>
 </html>

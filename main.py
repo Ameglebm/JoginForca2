@@ -7,7 +7,7 @@ pygame.init()
 LARGURA, ALTURA = 800, 600
 janela = pygame.display.set_mode((LARGURA, ALTURA))
 pygame.display.set_caption("Jogo da Forca")
-
+    
 BRANCO = (67, 4, 71)
 PRETO = (0, 0, 0)
 VERMELHO = (255, 0, 0)
@@ -24,10 +24,8 @@ palavras = ["amar","azul","acordado","amargura","assistir","apetecer","ascender"
 def escolher_palavra():
     return random.choice(palavras)
 
-
 def desenhar(palavra, letras_corretas, letras_erradas, estado_forca):
     janela.fill(BRANCO)
-    
     
     texto_titulo = FONTE_TITULO.render("Jogo da Forca", 1, PRETO)
     titulo_x = LARGURA // 2 - texto_titulo.get_width() // 2
@@ -98,7 +96,6 @@ def principal():
         
         desenhar(palavra, letras_corretas, letras_erradas, estado_forca)
         
-        
         ganhou = all(letra in letras_corretas for letra in palavra)
         if ganhou:
             exibir_mensagem("Você Ganhou!", VERDE)
@@ -117,7 +114,6 @@ def exibir_mensagem(mensagem, cor):
     texto = FONTE.render(mensagem, 1, cor)
     janela.blit(texto, (LARGURA/2 - texto.get_width()/2, ALTURA/2))
     pygame.display.update()
-
 
 if __name__ == "__main__":
     principal()
